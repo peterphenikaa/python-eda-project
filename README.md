@@ -1,7 +1,7 @@
 # Bài Tập Lớn Cuối Kỳ — Phân tích Văn bản & Phân loại Tự động (ML)
 
-**Thời gian thực hiện (dự kiến):** 1 tuần (7 ngày)  
-**Nhóm:** Bình + Hải  
+**Thời gian thực hiện (dự kiến):** 5 ngày  
+**Nhóm:** Bình + Hải (cả hai dev chính, chia việc đều mỗi ngày)  
 **Deadline nộp bài (theo đề):** Cuối tuần thứ 3 kể từ ngày phát đề, trước 23:59  
 
 ---
@@ -21,12 +21,16 @@ Ten_nhom/
 
 ### Yêu cầu dữ liệu
 
-| Tiêu chí | Yêu cầu |
-|----------|---------|
-| Ngôn ngữ | Tiếng Anh **hoặc** Tiếng Việt |
-| Số mẫu | ≥ 5.000 |
-| Số nhãn | ≥ 3 nhãn phân loại |
-| Gợi ý nguồn | Amazon Reviews (Kaggle), Shopee/Tiki, IMDB, hoặc web scraping (cần mô tả phương pháp) |
+| Tiêu chí | Yêu cầu | Trạng thái |
+|----------|---------|------------|
+| Ngôn ngữ | Tiếng Anh **hoặc** Tiếng Việt | ✅ Tiếng Việt |
+| Số mẫu | ≥ 5.000 | ✅ 13.652 mẫu |
+| Số nhãn | ≥ 3 nhãn phân loại | ✅ 3 nhãn sentiment |
+| Nguồn đã chọn | [Tiki Reviews (GitHub)](https://github.com/quangvh23/tiki-dataset-sentiment-classification) | ✅ Đã tải |
+
+**File dữ liệu:** `data/tiki_reviews.csv` — chi tiết nguồn xem `data/SOURCE.md`
+
+**Nhãn:** `tieu_cuc` (rating 20/40) · `trung_lap` (60) · `tich_cuc` (80/100)
 
 ### Tech stack gợi ý
 
@@ -99,138 +103,126 @@ Ten_nhom/
 
 ## 3. Phân công nhóm (Bình & Hải)
 
-| Vai trò | Dev | Trách nhiệm chính |
-|---------|-----|-------------------|
-| **Dev A — Data & NLP** | **Bình** | Dataset, EDA (A1–A2), `preprocess_text` (A3), vectorizers (A4), trực quan hóa (B), trả lời câu hỏi A & B trong notebook |
-| **Dev B — ML & Evaluation** | **Hải** | Train/val/test split (C1), 4 mô hình + CV (C2–C3), đánh giá test (D), tuning & cải tiến (E), trả lời câu hỏi C, D, E |
-| **Chung** | Cả hai | Review code lẫn nhau, viết `report.pdf`, kiểm tra output notebook, đóng gói `.zip`, chuẩn bị vấn đáp |
+**Nguyên tắc:** Cả hai là **dev chính** — mỗi ngày chia task **~50/50**, không phân vai “chỉ làm data” / “chỉ làm model”.
 
-> **Quy tắc làm việc:** Mỗi ngày sync 15 phút (standup); merge notebook qua Git hoặc chia section rõ ràng; **cả hai phải hiểu và giải thích được mọi dòng code**.
+| Nguyên tắc | Chi tiết |
+|------------|----------|
+| Pair work | Mỗi ngày sync 15 phút; review PR/cell notebook của nhau trước khi merge |
+| Hiểu hết pipeline | Sau mỗi ngày, cả hai đọc lại phần đối phương làm — sẵn sàng vấn đáp mọi phần |
+| Notebook chung | Một file `notebook.ipynb`; chia section rõ (comment `# [Bình]` / `# [Hải]`) hoặc branch ngắn merge trong ngày |
+| Báo cáo | `report.pdf` viết chung; mỗi người draft phần mình làm trong ngày, gộp ngày 5 |
 
----
-
-## 4. Lộ trình 1 tuần (7 ngày)
-
-Giả sử **Ngày 1 = Thứ Hai**. Điều chỉnh ngày thực tế theo lịch nhóm.
+> **Quy tắc:** Không merge code mình không hiểu. Ngày 5 cả hai **Restart & Run All** và mock vấn đáp chéo.
 
 ---
 
-### 📅 Ngày 1 — Thiết lập & Thu thập dữ liệu
+## 4. Lộ trình 5 ngày
 
-**Mục tiêu:** Có dataset sạch cơ bản, repo và notebook khung sẵn sàng.
-
-| Dev | Tasks |
-|-----|-------|
-| **Bình** | Chọn & tải dataset (≥5k mẫu, ≥3 nhãn); tạo cấu trúc thư mục `data/`; khám phá sơ bộ (head, info, value_counts); ghi chú nguồn dữ liệu |
-| **Hải** | Khởi tạo repo, `requirements.txt`, notebook skeleton (mục lục Phần A→E); thiết lập `random_state=42` |
-| **Chung** | Thống nhất tên cột (`text`, `label`), ngôn ngữ xử lý (EN/VI), thư viện NLP (NLTK vs spaCy) |
-
-**Done khi:** Data load được, ≥5000 rows, ≥3 labels, notebook có outline.
+| Ngày | Phần đề | Trạng thái |
+|------|---------|------------|
+| 1 | Setup + A1 (EDA sơ bộ) | ✅ Đã xong |
+| 2 | A2, A3, A4, A6 — hoàn thành Phần A | 🔲 |
+| 3 | B1, B2, B4 + C1 — Trực quan hóa & chia dữ liệu | 🔲 |
+| 4 | C2, C3 — 4 mô hình + Cross-Validation | 🔲 |
+| 5 | D, E + báo cáo + đóng gói nộp bài | 🔲 |
 
 ---
 
-### 📅 Ngày 2 — EDA & Tiền xử lý (Phần A)
+### 📅 Ngày 1 — Thiết lập & Thu thập dữ liệu ✅
 
-**Mục tiêu:** Hoàn thành A1, A2, A3, bắt đầu A4.
+**Mục tiêu:** Có dataset sạch, repo và notebook khung sẵn sàng.
 
-| Dev | Tasks |
-|-----|-------|
-| **Bình** | **A1:** 10 dòng đầu, describe, dtype, phân phối nhãn, nhận xét imbalanced |
-| **Bình** | **A2:** Tính word_count, char_count; thống kê theo nhãn; nhận xét tương quan |
-| **Bình** | **A3:** Viết `preprocess_text()` đầy đủ pipeline; chọn lemmatization **hoặc** stemming + giải thích |
-| **Bình** | Trả lời A3(a)(b), A6 trong markdown |
-| **Hải** | Review hàm preprocess; chuẩn bị pipeline sklearn (Pipeline + TF-IDF) cho ngày 3 |
-| **Hải** | **A4 (bắt đầu):** CountVectorizer & TfidfVectorizer fit mẫu, so sánh shape/sparsity |
+| Dev | Tasks | Trạng thái |
+|-----|-------|------------|
+| **Bình** | Tải dataset Tiki; `data/`, `SOURCE.md`, `prepare_data.py` → `tiki_reviews.csv`; EDA sơ bộ (head, info, value_counts) | ✅ |
+| **Hải** | `requirements.txt`, `notebook.ipynb` skeleton, `random_state=42` | ✅ (hoặc gộp chung ngày 1) |
+| **Chung** | Thống nhất cột `text`, `label`; NLTK cho tiếng Việt | ✅ |
 
-**Done khi:** Cột `text_clean` có sẵn; câu trả lời A1–A3, A6 trong notebook.
+**Done:** 13.652 mẫu, 3 nhãn, `data/tiki_reviews.csv`, notebook có A1.
 
 ---
 
-### 📅 Ngày 3 — Feature extraction & Trực quan hóa (A4 + Phần B)
+### 📅 Ngày 2 — Hoàn thành Phần A (Tiền xử lý & Phân tích)
 
-**Mục tiêu:** Xong A4; hoàn thành B1, B2, B4.
+**Mục tiêu:** Xong A2 → A6; có cột `text_clean`; sẵn sàng vectorize ngày 3.
 
-| Dev | Tasks |
-|-----|-------|
-| **Bình** | **A4:** Hoàn thiện BoW vs TF-IDF; giải thích công thức TF-IDF |
-| **Bình** | **B1:** Bar + pie chart phân phối nhãn |
-| **Bình** | **B2:** Box plot độ dài văn bản theo nhãn |
-| **Bình** | **B4:** Word cloud từng nhãn (≥3) |
-| **Hải** | **C1:** Split 70/10/20 stratified; in phân phối train/val/test; viết giải thích stratify |
-| **Hải** | Xây `TfidfVectorizer(max_features=10000, ngram_range=(1,2))` trên **train only** |
+| Dev | Tasks (~50%) |
+|-----|----------------|
+| **Bình** | **A2:** `word_count`, `char_count` theo nhãn; so sánh phân phối; nhận xét tương quan độ dài ↔ nhãn |
+| **Bình** | **A3:** `preprocess_text()` (lowercase, HTML, URL, special chars, tokenize, stopwords, lemma/stem) + giải thích từng bước |
+| **Bình** | Trả lời **A3(a)(b)** trong markdown |
+| **Hải** | **A4:** CountVectorizer & TfidfVectorizer (`max_features=10000`, `ngram_range=(1,2)`); so sánh BoW vs TF-IDF |
+| **Hải** | Trả lời **A4(a)** (công thức TF-IDF) |
+| **Hải** | **A6:** Phân tích lỗi fit vectorizer trên test + data leakage |
+| **Chung** | Bình review A4/A6 của Hải; Hải review `preprocess_text` của Bình |
 
-**Done khi:** Tất cả biểu đồ Phần B có trong notebook; train/val/test đã tách.
-
----
-
-### 📅 Ngày 4 — Huấn luyện 4 mô hình (Phần C — C2)
-
-**Mục tiêu:** Fit 4 mô hình với hyperparameter grid gợi ý; chọn best trên validation.
-
-| Dev | Tasks |
-|-----|-------|
-| **Hải** | MultinomialNB — grid alpha {0.1, 0.5, 1.0} |
-| **Hải** | LogisticRegression — C {0.1, 1, 10}, solver='lbfgs', max_iter=1000 |
-| **Hải** | LinearSVC — C {0.1, 1, 10} |
-| **Hải** | RandomForest — n_estimators {100,200}, max_depth {None,10,20} |
-| **Hải** | Trả lời câu hỏi C2 (C, margin, RF overfitting) |
-| **Bình** | Review pipeline: vectorizer fit trên train, transform val/test |
-| **Bình** | Bắt đầu draft report — mục Giới thiệu + Phần A & B |
-
-**Done khi:** 4 mô hình có best params trên val; accuracy val của từng model.
+**Done khi:** `text_clean` có trong DataFrame; Phần A đủ code + câu trả lời lý thuyết.
 
 ---
 
-### 📅 Ngày 5 — Cross-Validation & Đánh giá Test (C3 + Phần D)
+### 📅 Ngày 3 — Phần B (Trực quan hóa) + C1 (Chia dữ liệu)
 
-**Mục tiêu:** Stratified 5-Fold CV; bảng metrics trên test; phân tích sâu.
+**Mục tiêu:** Xong toàn bộ biểu đồ B; train/val/test 70/10/20; TF-IDF fit trên train.
 
-| Dev | Tasks |
-|-----|-------|
-| **Hải** | **C3:** StratifiedKFold k=5, mean ± std accuracy 4 models |
-| **Hải** | Trả lời 3 câu C3 (stratified vs k-fold, std cao nhất, CV vs val) |
-| **Hải** | **D1:** Bảng Accuracy, Precision, Recall, F1 (macro) trên **test** |
-| **Hải** | **D2:** classification_report model tốt nhất; phân tích nhãn tiêu cực |
-| **Bình** | **D3:** Lấy 10 mẫu misclassified; phân tích đặc điểm + đề xuất cải thiện |
-| **Bình** | **D4:** Viết phản biện "85% accuracy đủ production?" |
-| **Bình** | Cập nhật report Phần C & D |
+| Dev | Tasks (~50%) |
+|-----|----------------|
+| **Bình** | **B1:** Bar chart + pie chart phân phối nhãn (tiêu đề, nhãn trục, màu, chú thích) + nhận xét |
+| **Bình** | **B2:** Box plot độ dài văn bản theo nhãn + nhận xét |
+| **Hải** | **B4:** Word cloud riêng 3 nhãn (nền tương phản, kích thước figure phù hợp) + nhận xét từ vựng |
+| **Hải** | **C1:** Split 70/10/20, `stratify=y`, `random_state=42`; in phân phối từng tập |
+| **Hải** | Giải thích markdown: tại sao `stratify`? val khác test thế nào? |
+| **Hải** | `TfidfVectorizer` fit **chỉ trên train**, transform val/test |
+| **Chung** | Thống nhất style biểu đồ (font, palette); kiểm tra không leakage |
 
-**Done khi:** Bảng D1 điền số thực; D2–D4 có lập luận rõ ràng.
-
----
-
-### 📅 Ngày 6 — Tối ưu hóa & Cải tiến (Phần E)
-
-**Mục tiêu:** GridSearch/RandomSearch ≥2 models; ≥1 kỹ thuật nâng cao; so sánh trước/sau.
-
-| Dev | Tasks |
-|-----|-------|
-| **Hải** | **E1:** GridSearchCV hoặc RandomizedSearchCV cho 2 model tốt nhất (≥3 params × ≥3 values) |
-| **Hải** | Ghi best params + so sánh baseline vs tuned |
-| **Hải** | **E3:** Chọn & triển khai 1 kỹ thuật (gợi ý: `class_weight='balanced'` hoặc SMOTE nếu imbalanced mạnh) |
-| **Hải** | Trả lời E2 (Grid vs Random, CV trong tuning, diminishing returns) |
-| **Bình** | **E4:** Viết phản tư 300–400 từ (BERT/embeddings, thêm data, bài học) |
-| **Bình** | Hoàn thiện report Phần E |
-| **Chung** | Chạy lại toàn bộ notebook top-to-bottom (`Restart & Run All`) |
-
-**Done khi:** E1–E4 có số liệu và phân tích; notebook chạy không lỗi.
+**Done khi:** Phần B đủ 4 loại biểu đồ; `X_train`, `X_val`, `X_test` (đã vectorize) sẵn sàng.
 
 ---
 
-### 📅 Ngày 7 — Báo cáo, QA & Đóng gói
+### 📅 Ngày 4 — Phần C (Mô hình + Cross-Validation)
 
-**Mục tiêu:** Nộp bài đúng format; sẵn sàng vấn đáp.
+**Mục tiêu:** 4 mô hình có best hyperparameter trên val; Stratified 5-Fold CV.
 
-| Dev | Tasks |
-|-----|-------|
-| **Bình** | Hoàn thiện `report.pdf`: cover, mục lục, EDA, visualization, kết luận |
-| **Hải** | Hoàn thiện `report.pdf`: methodology, models, results tables, tuning |
-| **Chung** | Kiểm tra checklist đề bài (mục 5 bên dưới) |
-| **Chung** | Export notebook có **đầy đủ output** |
-| **Chung** | Đóng gói `Ten_nhom.zip` (notebook + report + data/script) |
-| **Chung** | Mock vấn đáp 30 phút: mỗi người giải thích 2 phần bất kỳ |
+| Dev | Tasks (~50%) |
+|-----|----------------|
+| **Bình** | **C2:** MultinomialNB (`alpha` {0.1, 0.5, 1.0}) + LogisticRegression (`C` {0.1, 1, 10}) |
+| **Bình** | Trả lời **C2:** tham số `C` của Logistic Regression — overfitting |
+| **Bình** | **C3:** StratifiedKFold k=5 cho NB + LR → mean ± std accuracy |
+| **Hải** | **C2:** LinearSVC (`C` {0.1, 1, 10}) + RandomForest (`n_estimators`, `max_depth` grid đề bài) |
+| **Hải** | Trả lời **C2:** margin/support vectors (SVM); RF vs overfitting |
+| **Hải** | **C3:** StratifiedKFold k=5 cho SVM + RF → mean ± std accuracy |
+| **Chung** | Gộp bảng CV 4 models; trả lời 3 câu **C3** (stratified vs k-fold, std cao nhất, CV vs val) |
 
-**Done khi:** File zip sẵn sàng nộp; cả hai hiểu toàn bộ pipeline.
+**Done khi:** Best params từng model trên val; bảng CV đủ 4 dòng.
+
+---
+
+### 📅 Ngày 5 — Phần D + E + Báo cáo & Nộp bài
+
+**Mục tiêu:** Đánh giá test, tuning, cải tiến, `report.pdf`, đóng gói `.zip`.
+
+**Sáng — Đánh giá & tối ưu**
+
+| Dev | Tasks (~50%) |
+|-----|----------------|
+| **Bình** | **D3:** 10 mẫu misclassified + phân tích đặc điểm chung + đề xuất xử lý |
+| **Bình** | **D4:** Phản biện "Accuracy 85% đủ production?" (300–500 từ) |
+| **Bình** | **E4:** Phản tư 300–400 từ (hướng cải tiến + bài học) |
+| **Hải** | **D1:** Bảng test — Accuracy, Precision, Recall, F1 (macro) cho 4 models |
+| **Hải** | **D2:** `classification_report` model tốt nhất; Precision/Recall theo nhãn; tình huống lọc review tiêu cực |
+| **Hải** | **E1:** GridSearchCV / RandomizedSearchCV ≥2 model tốt nhất (≥3 params × ≥3 values) |
+| **Hải** | **E2** + **E3:** Câu hỏi tuning; 1 kỹ thuật nâng cao (`class_weight` / SMOTE / …) + so sánh trước/sau |
+
+**Chiều — Chung (cả hai)**
+
+| Tasks |
+|-------|
+| Gộp `report.pdf` (Bình: EDA + viz + kết luận · Hải: methodology + models + bảng kết quả) |
+| `Restart & Run All` notebook — đảm bảo có output |
+| Rà checklist mục 5 |
+| Đóng gói `Ten_nhom.zip` |
+| Mock vấn đáp 30 phút — mỗi người giải thích 2 phần do đối phương làm |
+
+**Done khi:** Zip sẵn sàng nộp; cả hai giải thích được toàn pipeline A→E.
 
 ---
 
@@ -333,7 +325,7 @@ nltk.download('wordnet')  # nếu dùng lemmatization
 | Notebook chạy lâu (RF, GridSearch) | Dùng subset khi debug; `n_jobs=-1`; RandomizedSearchCV nếu grid quá lớn |
 | Tiếng Việt: stopwords/stemming kém | Dùng spaCy `vi_core_news_sm` hoặc bộ stopwords tiếng Việt custom |
 | Data leakage | Luôn fit preprocessor/vectorizer trên train; Pipeline sklearn |
-| Copy code không hiểu | Pair review hàng ngày; mock vấn đáp ngày 7 |
+| Copy code không hiểu | Pair review hàng ngày; mock vấn đáp ngày 5 |
 
 ---
 
@@ -350,12 +342,12 @@ nltk.download('wordnet')  # nếu dùng lemmatization
 
 ---
 
-## 10. Bước tiếp theo ngay hôm nay
+## 10. Bước tiếp theo (Ngày 2)
 
-1. **Bình:** Chọn dataset và đặt vào `data/`  
-2. **Hải:** Tạo `notebook.ipynb` + `requirements.txt` theo outline mục 6  
-3. **Cả hai:** Họp 15 phút thống nhất dataset và ngôn ngữ (EN/VI)  
+1. **Bình:** A2 + A3 + câu hỏi A3(a)(b)  
+2. **Hải:** A4 + A4(a) + A6  
+3. **Cả hai:** Standup 15 phút — review code buổi chiều trước khi merge notebook  
 
 ---
 
-*Tài liệu này là roadmap nội bộ nhóm. Cập nhật tiến độ hàng ngày bằng cách tick checklist mục 5.*
+*Tài liệu này là roadmap nội bộ nhóm (5 ngày). Cập nhật tiến độ bằng cách tick checklist mục 5 và cột trạng thái mục 4.*
