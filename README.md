@@ -60,7 +60,6 @@ Ten_nhom/
 | ID | Việc cần làm | Output |
 |----|--------------|--------|
 | B1 | Bar chart + pie chart phân phối nhãn (tiêu đề, nhãn trục, màu, chú thích) | 2 biểu đồ + nhận xét |
-| B2 | Box plot độ dài văn bản theo nhãn | Biểu đồ + nhận xét |
 | B4 | Word cloud **riêng từng nhãn** (≥3 nhãn), nền tương phản | ≥3 figure + nhận xét từ vựng |
 
 ### PHẦN C — Xây dựng mô hình (25đ)
@@ -122,7 +121,7 @@ Ten_nhom/
 |------|---------|------------|
 | 1 | Setup + A1 (EDA sơ bộ) | ✅ Đã xong |
 | 2 | A2, A3, A4, A6 — hoàn thành Phần A | 🔲 |
-| 3 | B1, B2, B4 + C1 — Trực quan hóa & chia dữ liệu | 🔲 |
+| 3 | B1, B4 + C1 — Trực quan hóa & chia dữ liệu | 🔲 |
 | 4 | C2, C3 — 4 mô hình + Cross-Validation | 🔲 |
 | 5 | D, E + báo cáo + đóng gói nộp bài | 🔲 |
 
@@ -167,14 +166,13 @@ Ten_nhom/
 | Dev | Tasks (~50%) |
 |-----|----------------|
 | **Bình** | **B1:** Bar chart + pie chart phân phối nhãn (tiêu đề, nhãn trục, màu, chú thích) + nhận xét |
-| **Bình** | **B2:** Box plot độ dài văn bản theo nhãn + nhận xét |
 | **Hải** | **B4:** Word cloud riêng 3 nhãn (nền tương phản, kích thước figure phù hợp) + nhận xét từ vựng |
 | **Hải** | **C1:** Split 70/10/20, `stratify=y`, `random_state=42`; in phân phối từng tập |
 | **Hải** | Giải thích markdown: tại sao `stratify`? val khác test thế nào? |
 | **Hải** | `TfidfVectorizer` fit **chỉ trên train**, transform val/test |
 | **Chung** | Thống nhất style biểu đồ (font, palette); kiểm tra không leakage |
 
-**Done khi:** Phần B đủ 4 loại biểu đồ; `X_train`, `X_val`, `X_test` (đã vectorize) sẵn sàng.
+**Done khi:** Phần B đủ B1 + B4; `X_train`, `X_val`, `X_test` (đã vectorize) sẵn sàng.
 
 ---
 
@@ -243,7 +241,6 @@ Ten_nhom/
 
 ### Trực quan hóa
 - [ ] Bar + pie chart nhãn
-- [ ] Box plot độ dài theo nhãn
 - [ ] Word cloud ≥ 3 nhãn
 
 ### Câu hỏi lý thuyết (bắt buộc có lập luận)
@@ -271,23 +268,22 @@ Ten_nhom/
 7. A6 — Phân tích lỗi vectorizer
 ── PHẦN B ──
 8. B1 — Bar & Pie chart
-9. B2 — Box plot
-10. B4 — Word clouds
+9. B4 — Word clouds
 ── PHẦN C ──
-11. C1 — Train/Val/Test split
-12. C2 — 4 models + câu hỏi
-13. C3 — Stratified K-Fold CV
+10. C1 — Train/Val/Test split
+11. C2 — 4 models + câu hỏi
+12. C3 — Stratified K-Fold CV
 ── PHẦN D ──
-14. D1 — Bảng metrics test
-15. D2 — Classification report + phân tích
-16. D3 — 10 mẫu sai
-17. D4 — Production debate
+13. D1 — Bảng metrics test
+14. D2 — Classification report + phân tích
+15. D3 — 10 mẫu sai
+16. D4 — Production debate
 ── PHẦN E ──
-18. E1 — Hyperparameter tuning
-19. E2 — Câu hỏi tuning
-20. E3 — Kỹ thuật cải tiến
-21. E4 — Phản tư & đề xuất
-22. Kết luận
+17. E1 — Hyperparameter tuning
+18. E2 — Câu hỏi tuning
+19. E3 — Kỹ thuật cải tiến
+20. E4 — Phản tư & đề xuất
+21. Kết luận
 ```
 
 ---
